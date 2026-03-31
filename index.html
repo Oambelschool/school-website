@@ -3,312 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>វិទ្យាល័យ ស.ក.ព.ន អូរអំបិល - គេហទំព័រផ្លូវការ</title>
-    <!-- Tailwind CSS for modern styling -->
+    <title>សាលាបញ្ញាសាស្ត្រអន្តរជាតិ - PSIS Sensok</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Khmer Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;700&family=Moul&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-blue: #002366;
-            --secondary-blue: #003399;
-            --accent-red: #cc0000;
-        }
         body {
             font-family: 'Kantumruy Pro', sans-serif;
-            background-color: #f0f2f5;
+            background-color: #f3f4f6;
         }
         .khmer-moul {
             font-family: 'Moul', serif;
         }
-        .nav-gradient {
-            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+        .bg-psis-blue {
+            background-color: #1e2a78;
         }
-        .gallery-item {
-            transition: all 0.3s ease;
+        .bg-psis-gold {
+            background-color: #fdb813;
         }
-        .gallery-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        /* Animation for Slider */
-        .fade-in {
-            animation: fadeIn 0.8s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-blue);
+        .hero-gradient {
+            background: linear-gradient(rgba(30, 42, 120, 0.8), rgba(30, 42, 120, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-gray-100">
 
-    <!-- TOP HEADER -->
-    <header class="bg-white border-b-2 border-gray-100 shadow-sm">
-        <div class="container mx-auto px-4 py-3 flex flex-col lg:flex-row justify-between items-center gap-4">             
-                    <!-- Update logo.png with your actual file -->
-                    <a href="https://ibb.co/7Jk4sXhW">
-                        <img src="https://i.ibb.co/qMJ5Td6s/585062235-1461588929141817-9088042084335284176-n.png" alt="585062235-1461588929141817-9088042084335284176-n" border="0" width:800px hight:800px ></a>
-              
-                    <h1 class="khmer-moul text-blue-900 text-xl lg:text-2xl leading-snug">វិទ្យាល័យ ស.ក.ព.ន អូរអំបិល</h1>
+    <!-- Top Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="https://via.placeholder.com/80" alt="PSIS Logo" class="w-16 h-16 md:w-20 md:h-20 object-contain">
+                <div>
+                    <h1 class="khmer-moul text-blue-900 text-lg md:text-xl">សាលាបញ្ញាសាស្ត្រអន្តរជាតិ សាខាសែនសុខ</h1>
+                    <p class="text-red-600 font-bold text-sm md:text-base">Paññāsāstra International School Sensok</p>
                     <div class="flex space-x-4 mt-1">
-                        <span class="text-red-600 font-bold text-xs uppercase tracking-wider">វិន័យ</span>
-                        <span class="text-red-600 font-bold text-xs uppercase tracking-wider">គុណធម៌</span>
-                        <span class="text-red-600 font-bold text-xs uppercase tracking-wider">សុភមង្គល</span>
+                        <span class="text-blue-800 text-xs font-bold">វិន័យ</span>
+                        <span class="text-red-600 text-xs font-bold">គុណធម៌</span>
+                        <span class="text-yellow-600 text-xs font-bold">ស្មារតីជួយ</span>
                     </div>
                 </div>
             </div>
-
-            <div class="flex items-center space-x-2">
-                <a href="#" class="px-3 py-1.5 bg-gray-100 text-gray-700 text-xs rounded hover:bg-gray-200 transition">English</a>
-                <a href="#" class="px-3 py-1.5 bg-blue-800 text-white text-xs rounded shadow-md">ភាសាខ្មែរ</a>
-                <a href="#" class="px-3 py-1.5 bg-gray-100 text-gray-700 text-xs rounded hover:bg-gray-200 transition">Web Mail</a>
+            
+            <div class="hidden lg:flex flex-col items-end space-y-2">
+                <div class="flex space-x-1">
+                    <button class="bg-gray-200 px-3 py-1 text-xs rounded">អង់គ្លេស</button>
+                    <button class="bg-blue-800 text-white px-3 py-1 text-xs rounded">ភាសាខ្មែរ</button>
+                    <button class="bg-gray-200 px-3 py-1 text-xs rounded">Web Mail</button>
+                </div>
+                <img src="https://via.placeholder.com/300x80?text=Building+Image" alt="Building" class="h-16 rounded shadow-sm">
             </div>
         </div>
     </header>
 
-    <!-- NAVIGATION MENU -->
-    <nav class="nav-gradient text-white sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto">
-            <ul class="flex flex-wrap items-center overflow-x-auto whitespace-nowrap scrollbar-hide">
-                <li class="px-6 py-4 bg-red-700 hover:bg-red-800 cursor-pointer flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                    </svg>
-                    <span class="ml-2 font-bold text-sm">ទំព័រដើម</span>
-                </li>
-                <li class="px-5 py-4 hover:bg-white/10 cursor-pointer border-r border-white/10 text-sm">ការអប់រំ</li>
-                <li class="px-5 py-4 hover:bg-white/10 cursor-pointer border-r border-white/10 text-sm">ការចូលរៀន</li>
-                <li class="px-5 py-4 hover:bg-white/10 cursor-pointer border-r border-white/10 text-sm">ព័ត៌មាន និង ព្រឹត្តិការណ៍</li>
-                <li class="px-5 py-4 hover:bg-white/10 cursor-pointer border-r border-white/10 text-sm">កម្រងរូបភាព</li>
-                <li class="px-5 py-4 hover:bg-white/10 cursor-pointer border-r border-white/10 text-sm">អំពីយើង</li>
-                <li class="px-5 py-4 hover:bg-white/10 cursor-pointer border-r border-white/10 text-sm">ទំនាក់ទំនងយើង</li>
-                <li class="hidden xl:flex ml-auto px-6 py-4 bg-blue-800 font-bold text-xs items-center uppercase italic">
-                    <span class="mr-2">Follow Us</span>
-                    <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-8.74h-2.94v-3.403h2.94v-2.511c0-2.91 1.777-4.493 4.371-4.493 1.242 0 2.311.092 2.622.134v3.038l-1.799.001c-1.412 0-1.686.672-1.686 1.657v2.174h3.363l-.438 3.403h-2.925v8.74h6.033c.731 0 1.325-.593 1.325-1.324v-21.351c0-.732-.594-1.325-1.325-1.325z"/></svg>
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-900 text-white sticky top-0 z-50">
+        <div class="container mx-auto px-2">
+            <ul class="flex flex-wrap items-center text-sm md:text-base overflow-x-auto whitespace-nowrap">
+                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg></li>
+                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">អំពីយើង</li>
+                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">ការអប់រំ</li>
+                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">ការចុះឈ្មោះ</li>
+                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">ព័ត៌មាន និង ព្រឹត្តិការណ៍</li>
+                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">កម្រងរូបភាព</li>
+                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">ទំនាក់ទំនង</li>
+                <li class="p-4 hover:bg-blue-700 bg-blue-800 cursor-pointer flex items-center">
+                    WE'RE ON FACEBOOK
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- BANNER SLIDER AREA -->
-    <div class="relative w-full aspect-[21/9] lg:aspect-[25/8] overflow-hidden bg-gray-900 group">
-        <!-- Main Image -->
-      <div class="w-full px-4 md:px-10 lg:px-20"> <div class="w-full aspect-[2/1] lg:aspect-[25/8] overflow-hidden rounded-lg bg-gray-900 shadow-xl mb-6">
-             <div class="banner-container" style="background-color: #0a1931;">
-                <a href="https://ibb.co/1GXTdLx4"><img src="https://i.ibb.co/1GXTdLx4/image.jpg" class="banner-container object-cover w-full h-full" alt="Banner"></a>
-             </div>
-        </div>
-        <!-- Overlay Text Container -->
-        <div class="absolute inset-0 flex items-center justify-center text-center p-6 bg-gradient-to-t from-blue-900/60 to-transparent pointer-events-none">
-            <div class="max-w-4xl">
-                <h3 id="slider-text" class="khmer-moul text-white text-2xl md:text-4xl lg:text-5xl drop-shadow-lg leading-relaxed mb-4">
-                     កូនៗ ជាដុំពេជ្រដែលមិនទាន់ច្នៃ ការសិក្សាអប់រំជាជាងច្នៃដ៏ល្អបំផុត
-                </h3>
-                <div class="h-1 w-32 bg-yellow-400 mx-auto mb-6"></div>
-                <p class="text-white text-lg font-bold khmer-moul">លោក ស្តើង ស៊ីវហឺ</p>
-                <p class="text-white/80 text-sm mt-1 uppercase tracking-widest">នាយកវិទ្យាល័យអូរអមបិល</p>
+    <!-- Hero Slider Area -->
+    <section class="hero-gradient relative h-[400px] flex items-center">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-white">
+            <div class="flex justify-center md:justify-start">
+                <img src="https://via.placeholder.com/250x350?text=Founder+Image" alt="Founder" class="border-4 border-white shadow-2xl rounded-sm max-h-[350px]">
+            </div>
+            <div class="text-center md:text-left space-y-4">
+                <h2 class="khmer-moul text-xl md:text-3xl leading-relaxed">
+                    ស្រឡាញ់មនុស្សម្នាក់ព្រោះតែ <span class="text-yellow-400">សន្តានចិត្ត</span><br>
+                    សរសើើមនុស្សម្នាក់ព្រោះតែ <span class="text-yellow-400">សមត្ថភាព</span><br>
+                    គោរពមនុស្សម្នាក់ព្រោះតែ <span class="text-yellow-400">គុណធម៌</span>
+                </h2>
+                <p class="text-lg italic">- លោកសាស្ត្រាចារ្យ កុល ផេង</p>
             </div>
         </div>
+        <!-- Slider Arrows -->
+        <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 p-2 rounded-full hover:bg-black/50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 p-2 rounded-full hover:bg-black/50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </button>
+    </section>
 
-        <!-- Arrows -->
-        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full text-white backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity z-10">❮</button>
-        <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full text-white backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity z-10">❯</button>
-        
-        <!-- Dots -->
-        <div id="slider-dots" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-            <!-- Dots will be generated by JS -->
-        </div>
-    </div>
-
-    <!-- MAIN CONTENT BODY -->
-    <main class="container mx-auto px-4 py-10">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
             
-            <div class="lg:col-span-3 space-y-10">
-                <!-- Welcome Section -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border-t-4 border-blue-900">
-                    <h3 class="khmer-moul text-blue-900 text-lg md:text-xl border-b pb-4 mb-6">
-                        សូមស្វាគមន៍ការមកកាន់វិទ្យាល័យអូរអំបិល
-                    </h3>
-                    <div class="flex flex-col md:flex-row gap-8">
-                        <div class="md:w-1/3">
-                            <div class="relative">
-                                <img src="https://via.placeholder.com/400x500?text=Principal+Image" alt="Principal" class="rounded-lg shadow-lg border-4 border-white w-full">
-                                <div class="absolute -bottom-4 -right-4 bg-yellow-400 p-2 rounded shadow-lg hidden md:block">
-                                    <svg class="h-8 w-8 text-blue-900" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md:w-2/3 space-y-4">
-                            <p class="text-gray-700 leading-relaxed text-justify">
-                                បេសកកម្មរបស់វិទ្យាល័យអូរអំបិល គឺផ្តល់នូវការអប់រំប្រកបដោយគុណភាពខ្ពស់ និងវិន័យថ្លៃថ្នូរ ដើម្បីកសាងធនធានមនុស្សដែលមានចំណេះដឹង ជំនាញ និងសីលធម៌ល្អសម្រាប់ការអភិវឌ្ឍសង្គមជាតិ។
-                            </p>
-                            <p class="text-gray-700 leading-relaxed text-justify">
-                                យើងជឿជាក់យ៉ាងមុតមាំថា ការអប់រំគឺជាគ្រឹះដ៏សំខាន់បំផុតនៃជីវិត។ សាលារបស់យើងផ្តល់នូវបរិយាកាសសិក្សាដ៏ល្អប្រសើរ ជាមួយនឹងលោកគ្រូអ្នកគ្រូដែលមានបទពិសោធន៍ និងការយកចិត្តទុកដាក់ខ្ពស់ចំពោះសិស្សានុសិស្សគ្រប់រូប។
-                            </p>
-                        </div>
+            <!-- Left Side: Content -->
+            <div class="lg:w-3/4">
+                <h3 class="khmer-moul text-blue-900 text-xl border-b-2 border-blue-900 pb-2 mb-6">សូមស្វាគមន៍ការមកកាន់សាលាបញ្ញាសាស្ត្រអន្តរជាតិសាខាសែនសុខ</h3>
+                
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/3">
+                        <img src="https://via.placeholder.com/400x300?text=School+Activity" alt="School" class="w-full rounded shadow">
                     </div>
-                </div>
-
-                <!-- Gallery Section -->
-                <div>
-                    <div class="flex items-center space-x-2 mb-6">
-                        <div class="h-8 w-2 bg-blue-900 rounded"></div>
-                        <h3 class="khmer-moul text-blue-900 text-lg">កម្រងរូបភាពសកម្មភាព</h3>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        <!-- Photo Items -->
-                        <div class="gallery-item bg-white rounded-lg shadow overflow-hidden group cursor-pointer" onclick="openLightbox('https://via.placeholder.com/800x600?text=Activity+1')">
-                            <div class="relative overflow-hidden aspect-[4/3]">
-                                <img src="https://via.placeholder.com/400x300?text=Activity+1" alt="Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            </div>
-                            <div class="p-3 bg-gray-50 border-t"><p class="text-xs font-bold text-gray-800 text-center">សកម្មភាពសិក្សាក្នុងថ្នាក់</p></div>
-                        </div>
-                        <div class="gallery-item bg-white rounded-lg shadow overflow-hidden group cursor-pointer" onclick="openLightbox('https://via.placeholder.com/800x600?text=Activity+2')">
-                            <div class="relative overflow-hidden aspect-[4/3]">
-                                <img src="https://via.placeholder.com/400x300?text=Activity+2" alt="Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            </div>
-                            <div class="p-3 bg-gray-50 border-t"><p class="text-xs font-bold text-gray-800 text-center">កម្មវិធីកីឡាប្រចាំឆ្នាំ</p></div>
-                        </div>
-                        <div class="gallery-item bg-white rounded-lg shadow overflow-hidden group cursor-pointer" onclick="openLightbox('https://via.placeholder.com/800x600?text=Activity+3')">
-                            <div class="relative overflow-hidden aspect-[4/3]">
-                                <img src="https://via.placeholder.com/400x300?text=Activity+3" alt="Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            </div>
-                            <div class="p-3 bg-gray-50 border-t"><p class="text-xs font-bold text-gray-800 text-center">ការចុះកម្មសិក្សាខាងក្រៅ</p></div>
-                        </div>
+                    <div class="md:w-2/3 text-gray-700 leading-relaxed space-y-4">
+                        <p class="font-bold text-blue-800">The mission of Paññāsāstra International School (PSIS)...</p>
+                        <p>
+                            ...is to provide a high quality education that is distinctively English based, while pursuing academic excellence in every discipline of study. Paññāsāstra International School recognizes each student as an innocent youth full of hope and expectation in search for happiness.
+                        </p>
+                        <p>
+                            We strongly believe that the major component to becoming a successful program is through the alliance among the school personnel, parents, the community as well as international exchange programs.
+                        </p>
+                        <button class="text-blue-700 font-bold hover:underline">Read more →</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Sidebar -->
-            <aside class="space-y-8">
-                <div class="bg-white rounded-xl shadow-sm overflow-hidden border">
-                    <div class="bg-blue-900 text-white px-5 py-3 khmer-moul text-sm">ព័ត៌មានសំខាន់ៗ</div>
-                    <ul class="divide-y text-sm font-medium">
-                        <li class="px-5 py-3 hover:bg-blue-50 transition cursor-pointer flex items-center justify-between group">
-                            <span>បេសកកម្ម និងចក្ខុវិស័យ</span>
-                            <svg class="h-4 w-4 text-gray-400 group-hover:text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                        </li>
-                        <li class="px-5 py-3 hover:bg-blue-50 transition cursor-pointer flex items-center justify-between group">
-                            <span>តារាងពេលវេលាសិក្សា</span>
-                            <svg class="h-4 w-4 text-gray-400 group-hover:text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                        </li>
-                    </ul>
+            <!-- Right Side: Sidebar -->
+            <div class="lg:w-1/4">
+                <div class="bg-blue-900 text-white p-3 font-bold mb-2">ព័ត៌មានអំពី PSIS</div>
+                <ul class="bg-white shadow rounded divide-y divide-gray-100 mb-6">
+                    <li class="p-3 hover:bg-gray-50 cursor-pointer flex justify-between items-center text-sm">
+                        <span>សន្ទរកថាប្រធានគ្រប់គ្រង</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </li>
+                    <li class="p-3 hover:bg-gray-50 cursor-pointer flex justify-between items-center text-sm">
+                        <span>បេសកកម្ម</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </li>
+                    <li class="p-3 hover:bg-gray-50 cursor-pointer flex justify-between items-center text-sm">
+                        <span>ការសិក្សា</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </li>
+                    <li class="p-3 hover:bg-gray-50 cursor-pointer flex justify-between items-center text-sm">
+                        <span>រូបភាព និង វីដេអូ</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </li>
+                </ul>
+
+                <div class="bg-blue-900 text-white p-3 font-bold mb-2">វីដេអូ PSIS</div>
+                <div class="aspect-video bg-black rounded overflow-hidden">
+                    <div class="w-full h-full flex items-center justify-center text-white/50 italic text-xs">
+                        [Video Placeholder]
+                    </div>
                 </div>
-            </aside>
+            </div>
+            
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-blue-900 text-white py-12">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-10 mt-10">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-                <h4 class="khmer-moul text-lg mb-6 border-b border-white/20 pb-2">ទំនាក់ទំនង</h4>
-                <p class="text-sm opacity-90">ភូមិអូរអំបិល សង្កាត់អូរអំបិល ក្រុងសិរីសោភ័ណ ខេត្តបន្ទាយមានជ័យ</p>
+                <h4 class="khmer-moul mb-4 border-b border-blue-700 pb-2">ទំនាក់ទំនង</h4>
+                <p class="text-sm leading-relaxed">
+                    អាសយដ្ឋាន៖ ផ្លូវលេខ ១៩៨៦ សង្កាត់ភ្នំពេញថ្មី ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ<br>
+                    ទូរស័ព្ទ៖ 023 888 XXX / 012 XXX XXX<br>
+                    Email: info@psis-sensok.edu.kh
+                </p>
             </div>
             <div>
-                <h4 class="khmer-moul text-lg mb-6 border-b border-white/20 pb-2">កម្មវិធីសិក្សា</h4>
-                <p class="text-sm opacity-90">អនុវិទ្យាល័យ និង វិទ្យាល័យ</p>
+                <h4 class="khmer-moul mb-4 border-b border-blue-700 pb-2">តំណភ្ជាប់រហ័ស</h4>
+                <ul class="text-sm space-y-2">
+                    <li class="hover:text-yellow-400 cursor-pointer">ទំព័រដើម</li>
+                    <li class="hover:text-yellow-400 cursor-pointer">កម្មវិធីសិក្សា</li>
+                    <li class="hover:text-yellow-400 cursor-pointer">ព័ត៌មានសិស្ស</li>
+                </ul>
             </div>
-            <div class="flex flex-col items-center md:items-end">
-                <p class="text-xs opacity-60">រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 វិទ្យាល័យអូរអំបិល</p>
+            <div>
+                <h4 class="khmer-moul mb-4 border-b border-blue-700 pb-2">បណ្តាញសង្គម</h4>
+                <div class="flex space-x-4">
+                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-600 cursor-pointer">f</div>
+                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-600 cursor-pointer">y</div>
+                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-400 cursor-pointer">t</div>
+                </div>
             </div>
+        </div>
+        <div class="text-center mt-10 pt-6 border-t border-blue-800 text-xs text-blue-300">
+            © 2024 Paññāsāstra International School Sensok. All Rights Reserved.
         </div>
     </footer>
 
-    <!-- LIGHTBOX MODAL -->
-    <div id="lightbox" class="fixed inset-0 bg-black/90 z-[100] hidden flex items-center justify-center p-4 cursor-zoom-out" onclick="closeLightbox()">
-        <img id="lightbox-img" src="" class="max-w-full max-h-full rounded-lg shadow-2xl transition-transform duration-300">
-    </div>
-
-    <!-- JAVASCRIPT FOR INTERACTIVITY -->
-    <script>
-        // 1. Image Slider Logic
-        const slides = [
-            {
-                img: "https://via.placeholder.com/1920x800?text=Welcome+to+Our+School",
-                text: "ចៅៗជាដុំពេជ្រដែលមិនទាន់ច្នៃ<br>ការសិក្សាអប់រំជាជាងច្នៃដ៏ល្អបំផុត"
-            },
-            {
-                img: "https://via.placeholder.com/1920x800?text=Modern+Classroom",
-                text: "បរិយាកាសសិក្សាទំនើប<br>និងសម្បូរបែប"
-            },
-            {
-                img: "https://via.placeholder.com/1920x800?text=Student+Activity",
-                text: "វិន័យ គុណធម៌ សុភមង្គល<br>ជាមូលដ្ឋានគ្រឹះរបស់យើង"
-            }
-        ];
-
-        let currentSlide = 0;
-        const sliderImg = document.getElementById('main-slider');
-        const sliderText = document.getElementById('slider-text');
-        const dotsContainer = document.getElementById('slider-dots');
-
-        // Initialize Dots
-        slides.forEach((_, i) => {
-            const dot = document.createElement('span');
-            dot.className = `w-3 h-3 rounded-full cursor-pointer transition ${i === 0 ? 'bg-white' : 'bg-white/40'}`;
-            dot.onclick = () => goToSlide(i);
-            dotsContainer.appendChild(dot);
-        });
-
-        function updateSlider() {
-            sliderImg.classList.remove('fade-in');
-            void sliderImg.offsetWidth; // Trigger reflow
-            sliderImg.classList.add('fade-in');
-            
-            sliderImg.src = slides[currentSlide].img;
-            sliderText.innerHTML = slides[currentSlide].text;
-            
-            // Update dots
-            Array.from(dotsContainer.children).forEach((dot, i) => {
-                dot.className = `w-3 h-3 rounded-full cursor-pointer transition ${i === currentSlide ? 'bg-white' : 'bg-white/40'}`;
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateSlider();
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            updateSlider();
-        }
-
-        function goToSlide(i) {
-            currentSlide = i;
-            updateSlider();
-        }
-
-        // Auto slide every 5 seconds
-        setInterval(nextSlide, 5000);
-
-        // 2. Lightbox Gallery Logic
-        function openLightbox(src) {
-            const lb = document.getElementById('lightbox');
-            const lbImg = document.getElementById('lightbox-img');
-            lbImg.src = src;
-            lb.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Stop scrolling
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Resume scrolling
-        }
-    </script>
 </body>
 </html>
