@@ -9,159 +9,146 @@
     <style>
         body {
             font-family: 'Kantumruy Pro', sans-serif;
+            background-color: #f0f2f5;
         }
-        .khmer-moul {
+        .moul-font {
             font-family: 'Moul', serif;
         }
         .bg-school-blue {
-            background-color: #002366;
+            background-color: #002664;
         }
-        .bg-school-gold {
-            background-color: #fdb913;
+        .text-school-gold {
+            color: #d4af37;
         }
-        .text-school-blue {
-            color: #002366;
+        .nav-link:hover {
+            background-color: #003a96;
+            transition: 0.3s;
         }
-        .nav-item:hover {
-            background-color: #fdb913;
-            color: #002366;
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #002366 0%, #004aad 100%);
+        .hero-banner {
+            background: linear-gradient(rgba(0,38,100,0.7), rgba(0,38,100,0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
 
-    <!-- Header Section -->
-    <header class="bg-green border-b-4 border-school-gold shadow-sm">
+    <!-- Top Header -->
+    <header class="bg-white border-b-4 border-yellow-500">
         <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
-            <div class="flex items-center space-x-4 mb-4 md:mb-0">
-        
-                    <a href="https://ibb.co/mCtQnbsZ"><img src="https://i.ibb.co/VWDXFJyn/585062235-1461588929141817-9088042084335284176-n.png" alt="585062235-1461588929141817-9088042084335284176-n" border="0" class="w-20 h-20 bg-school-none></a>
-                </div>
+            <div class="flex items-center space-x-4">
+                <img src="585062235_1461588929141817_9088042084335284176_n.jpg" alt="School Logo" class="h-24 w-24 object-contain">
                 <div>
-                    <h1 class="khmer-moul text-school-blue text-xl md:text-2xl">វិទ្យាល័យ សម្តេចក្រុមព្រះ នរោត្តម រណឫទ្ធិ អូរអំបិល</h1>
-                    <p class="text-red-600 font-bold">វិន័យ គុណធម៌ សុភមង្គល</p>
+                    <h1 class="moul-font text-xl md:text-2xl text-blue-900">វិទ្យាល័យ សម្តេចក្រុមព្រះ នរោត្តម រណឫទ្ធិ អូរអំបិល</h1>
+                    <p class="text-sm font-bold text-red-600 mt-1">ចំណេះដឹង គុណធម៌ សីលធម៌ វិន័យ</p>
                 </div>
             </div>
-            <div class="flex space-x-2">
-                <button class="bg-gray-200 px-3 py-1 text-sm rounded">អង់គ្លេស</button>
-                <button class="bg-school-blue text-white px-3 py-1 text-sm rounded">ភាសាខ្មែរ</button>
+            <div class="hidden lg:flex space-x-2 mt-4 md:mt-0">
+                <button class="bg-gray-200 px-3 py-1 rounded text-sm">អង់គ្លេស</button>
+                <button class="bg-blue-800 text-white px-3 py-1 rounded text-sm">ភាសាខ្មែរ</button>
+                <button class="bg-gray-200 px-3 py-1 rounded text-sm">Web Mail</button>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Menu -->
-    <nav class="bg-school-blue text-white sticky top-0 z-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-school-blue sticky top-0 z-50">
         <div class="container mx-auto">
-            <ul class="flex flex-wrap items-center">
-                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900 bg-school-gold text-school-blue">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                </li>
-                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900">ទំព័រដើម</li>
-                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900">អំពីយើង</li>
-                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900">ការបង្រៀន</li>
-                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900">ព័ត៌មាន និង ព្រឹត្តិការណ៍</li>
-                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900">អាល់ប៊ុមរូបភាព</li>
-                <li class="nav-item px-4 py-3 cursor-pointer">ទំនាក់ទំនង</li>
+            <ul class="flex flex-wrap text-white text-sm md:text-base">
+                <li class="nav-link px-4 py-3 cursor-pointer border-r border-blue-800">🏠 ទំព័រដើម</li>
+                <li class="nav-link px-4 py-3 cursor-pointer border-r border-blue-800">ការអប់រំ ▾</li>
+                <li class="nav-link px-4 py-3 cursor-pointer border-r border-blue-800">ការចូលរៀន ▾</li>
+                <li class="nav-link px-4 py-3 cursor-pointer border-r border-blue-800">ព័ត៌មាន និង ព្រឹត្តិការណ៍</li>
+                <li class="nav-link px-4 py-3 cursor-pointer border-r border-blue-800">អាល់ប៊ុមរូបភាព</li>
+                <li class="nav-link px-4 py-3 cursor-pointer border-r border-blue-800">អំពីយើង ▾</li>
+                <li class="nav-link px-4 py-3 cursor-pointer">ទំនាក់ទំនង</li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Slider Area -->
-    <section class="hero-gradient relative overflow-hidden min-h-[400px] flex items-center">
-        <div class="container mx-auto px-4 py-12 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 text-white mb-8 md:mb-0">
-                 <a href="https://ibb.co/qYqXK6D6"><img src="https://i.ibb.co/RTrZf8g8/shutterstock-1927309106.jpg" alt="shutterstock-1927309106" border="0"></a>
-                <h5 class="khmer-moul text-3xl md:text-5xl leading-tight mb-6">អប់រំកុមារគ្រប់រូប ដើម្បីអនាគតដ៏ភ្លឺស្វាង</h5>
-                <p class="text-lg opacity-90 mb-8">យើងបណ្តុះបណ្តាលសិស្សានុសិស្សឱ្យមានចំណេះដឹង ជំនាញ និងសីលធម៌ខ្ពស់ ដើម្បីក្លាយជាសសរទ្រូងដ៏រឹងមាំសម្រាប់ជាតិមាតុភូមិ។</p>
-                <button class="bg-school-gold text-school-blue font-bold px-8 py-3 rounded-full hover:bg-yellow-400 transition">ស្វែងយល់បន្ថែម</button>
-            </div>
-            <div class="md:w-1/2 relative flex justify-center">
-                <div class="relative w-72 h-72 md:w-96 md:h-96">
-                    <!-- Image Placeholders as in your screenshot -->
-                    <div class="absolute inset-0 bg-white/10 rounded-full border-4 border-school-gold/50 animate-pulse" ></div>
-                    <div class="absolute top-0 right-0 w-40 h-35 bg-green rounded-2xl rotate-12 flex items-center justify-center border-4 border-school-gold overflow-hidden">
-                        <a href="https://ibb.co/qZ8Yf75"><img src="https://i.ibb.co/FP14MmV/image.jpg" alt="image" border="0" width:30 hight:30></a>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-40 h-35 bg-green rounded-2xl -rotate-12 flex items-center justify-center border-4 border-school-gold overflow-hidden" hight:640px >
-                        <a href="https://ibb.co/fGrbPdJp"><img src="https://i.ibb.co/zHP10VdR/130256177-3611610948929741-3325946418356480840-n.jpg" alt="130256177-3611610948929741-3325946418356480840-n" border="0"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Content Body -->
-    <main class="container mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
+    <!-- Main Content Section -->
+    <main class="container mx-auto px-4 py-6">
         
-        <!-- Left Article Content -->
-        <div class="lg:w-2/3">
-            <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-school-blue">
-                <h3 class="khmer-moul text-school-blue text-xl mb-4">ស្វាគមន៍មកកាន់វិទ្យាល័យ សម្តេចក្រុមព្រះ នរោត្តម រណឫទ្ធិ អូរអំបិល</h3>
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="md:w-1/3">
-                        <div class="bg-gray-200 aspect-[3/4] rounded flex items-center justify-center text-center p-4">
-                            [រូបភាពអគារសិក្សា ឬ នាយក]
+        <!-- Slider/Hero Area -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2">
+                <div class="relative rounded-lg overflow-hidden shadow-xl bg-blue-900 text-white p-8 min-h-[400px] flex items-center">
+                    <div class="z-10">
+                        <h2 class="moul-font text-3xl mb-4 text-yellow-400">ស្វាគមន៍មកកាន់ឆ្នាំសិក្សាថ្មី ២០២៥-២០២៦</h2>
+                        <p class="text-xl mb-6">ការចុះឈ្មោះចូលរៀនបានចាប់ផ្ដើមហើយ! ចាប់ពីថ្នាក់ទី ៧ ដល់ ទី ១២</p>
+                        <div class="flex space-x-4">
+                            <button class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition">ចុះឈ្មោះឥឡូវនេះ</button>
+                            <button class="border-2 border-white hover:bg-white hover:text-blue-900 py-2 px-6 rounded-full transition">ស្វែងយល់បន្ថែម</button>
                         </div>
                     </div>
-                    <div class="md:w-2/3 leading-relaxed text-gray-700">
-                        <p class="mb-4">បេសកកម្មរបស់វិទ្យាល័យ សម្តេចក្រុមព្រះ នរោត្តម រណឫទ្ធិ អូរអំបិល គឺផ្តល់នូវការអប់រំប្រកបដោយគុណភាពខ្ពស់ ស្របតាមស្តង់ដារអប់រំជាតិ។ យើងយកចិត្តទុកដាក់លើការលូតលាស់របស់សិស្សគ្រប់រូប ទាំងផ្នែកបញ្ញា ស្មារតី និងសុខភាពរាងកាយ។</p>
-                        <p>យើងជឿជាក់យ៉ាងមុតមាំថា កិច្ចសហការរវាងលោកគ្រូ អ្នកគ្រូ មាតាបិតាសិស្ស និងសហគមន៍ គឺជាគន្លឹះដ៏សំខាន់ក្នុងការសម្រេចបាននូវភាពជោគជ័យក្នុងការបណ្តុះបណ្តាលធនធានមនុស្សសម្រាប់អនាគត។</p>
+                    <div class="absolute right-0 bottom-0 opacity-20">
+                        <img src="585062235_1461588929141817_9088042084335284176_n.jpg" class="w-64 h-64">
                     </div>
                 </div>
+
+                <!-- Welcome Text -->
+                <section class="mt-8 bg-white p-6 rounded-lg shadow">
+                    <h3 class="moul-font text-blue-900 border-b-2 border-blue-900 pb-2 mb-4">សារស្វាគមន៍ពីនាយកសាលា</h3>
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-1/3">
+                            <div class="bg-gray-200 w-full h-48 rounded flex items-center justify-center text-gray-500 italic text-center p-4">
+                                                            </div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p class="text-gray-700 leading-relaxed">
+                                បេសកកម្មរបស់វិទ្យាល័យ សម្តេចក្រុមព្រះ នរោត្តម រណឫទ្ធិ អូរអំបិល គឺផ្តល់នូវការអប់រំប្រកបដោយគុណភាពខ្ពស់ វិន័យល្អ និងសីលធម៌ថ្លៃថ្នូរ។ យើងជឿជាក់ថាសិស្សានុសិស្សគ្រប់រូបមានសក្តានុពលក្នុងការអភិវឌ្ឍខ្លួនឱ្យក្លាយជាទំពាំងស្នងឫស្សីដ៏ល្អសម្រាប់ប្រទេសជាតិ។
+                            </p>
+                            <button class="mt-4 text-blue-800 font-bold hover:underline">អានបន្ត...</button>
+                        </div>
+                    </div>
+                </section>
             </div>
+
+            <!-- Sidebar -->
+            <aside class="lg:col-span-1">
+                <div class="bg-school-blue text-white rounded-t-lg px-4 py-2">
+                    <h3 class="font-bold">ព័ត៌មានអំពីសាលា</h3>
+                </div>
+                <div class="bg-white shadow rounded-b-lg mb-6">
+                    <ul class="divide-y divide-gray-100">
+                        <li class="px-4 py-3 hover:bg-gray-50 cursor-pointer">សេចក្តីជូនដំណឹងផ្សេងៗ</li>
+                        <li class="px-4 py-3 hover:bg-gray-50 cursor-pointer">រចនាសម្ព័ន្ធគ្រប់គ្រង</li>
+                        <li class="px-4 py-3 hover:bg-gray-50 cursor-pointer">បេសកកម្ម និង ចក្ខុវិស័យ</li>
+                        <li class="px-4 py-3 hover:bg-gray-50 cursor-pointer">កម្មវិធីសិក្សា</li>
+                        <li class="px-4 py-3 hover:bg-gray-50 cursor-pointer">តារាងលទ្ធផលប្រឡង</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-4 shadow rounded-lg border-l-4 border-blue-800">
+                    <h4 class="font-bold text-blue-900 mb-2">តាមដានយើងតាម Facebook</h4>
+                    <div class="bg-blue-50 h-32 flex items-center justify-center rounded border border-blue-200">
+                        <span class="text-blue-800 font-bold">Facebook Page Widget</span>
+                    </div>
+                </div>
+            </aside>
         </div>
-
-        <!-- Right Sidebar -->
-        <aside class="lg:w-1/3">
-            <div class="bg-school-blue rounded-t-lg text-white p-3 font-bold">
-                ព័ត៌មានអំពីសាលា
-            </div>
-            <div class="bg-white border border-t-0 rounded-b-lg shadow-sm">
-                <ul>
-                    <li class="border-b p-3 hover:bg-gray-50 cursor-pointer text-gray-700">សម្ភារៈរូបវន្ត និងគ្រប់គ្រង</li>
-                    <li class="border-b p-3 hover:bg-gray-50 cursor-pointer text-gray-700">បេសកកម្ម</li>
-                    <li class="border-b p-3 hover:bg-gray-50 cursor-pointer text-gray-700">ការសិក្សា</li>
-                    <li class="border-b p-3 hover:bg-gray-50 cursor-pointer text-gray-700">ចក្ខុវិស័យ និង គោលដៅ</li>
-                    <li class="p-3 hover:bg-gray-50 cursor-pointer text-gray-700">កាលវិភាគសិក្សា</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 bg-school-blue rounded-t-lg text-white p-3 font-bold">
-                ព្រឹត្តិការណ៍ថ្មីៗ
-            </div>
-            <div class="bg-white border border-t-0 rounded-b-lg shadow-sm p-4">
-                <div class="flex gap-3 mb-4">
-                    <div class="bg-school-gold text-school-blue px-2 py-1 h-fit text-center rounded font-bold">
-                        <span class="block text-lg">15</span>
-                        <span class="text-xs uppercase">មេសា</span>
-                    </div>
-                    <div class="text-sm">ពិធីអបអរសាទរ បុណ្យចូលឆ្នាំថ្មី ប្រពៃណីជាតិខ្មែរ</div>
-                </div>
-                <div class="flex gap-3">
-                    <div class="bg-school-gold text-school-blue px-2 py-1 h-fit text-center rounded font-bold">
-                        <span class="block text-lg">01</span>
-                        <span class="text-xs uppercase">មិថុនា</span>
-                    </div>
-                    <div class="text-sm">ទិវាកុមារអន្តរជាតិ និងការតាំងពិព័រណ៍ស្នាដៃសិស្ស</div>
-                </div>
-            </div>
-        </aside>
-
     </main>
 
     <!-- Footer -->
-    <footer class="bg-school-blue text-white py-10">
-        <div class="container mx-auto px-4 text-center">
-            <p class="mb-4">&copy; ២០២៤ រក្សាសិទ្ធិគ្រប់យ៉ាងដោយ វិទ្យាល័យ សម្តេចក្រុមព្រះ នរោត្តម រណឫទ្ធិ អូរអំបិល</p>
-            <div class="flex justify-center space-x-6">
-                <a href="#" class="hover:text-school-gold transition">ហ្វេសប៊ុក</a>
-                <a href="#" class="hover:text-school-gold transition">ទូរលេខ</a>
-                <a href="#" class="hover:text-school-gold transition">យូធូប</a>
+    <footer class="bg-school-blue text-white mt-12 py-10">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="moul-font mb-4 text-yellow-400">ទំនាក់ទំនង</h4>
+                <p class="text-sm mb-2">📍 អាសយដ្ឋាន៖ ភូមិអូរអំបិល សង្កាត់អូរអំបិល ក្រុងសិរីសោភ័ណ ខេត្តបន្ទាយមានជ័យ</p>
+                <p class="text-sm mb-2">📞 ទូរស័ព្ទ៖ 012 345 678 / 098 765 432</p>
+                <p class="text-sm">📧 អ៊ីមែល៖ info@ouambelhs.edu.kh</p>
+            </div>
+            <div>
+                <h4 class="moul-font mb-4 text-yellow-400">តំណភ្ជាប់សំខាន់ៗ</h4>
+                <ul class="text-sm space-y-2">
+                    <li>- ក្រសួងអប់រំ យុវជន និងកីឡា</li>
+                    <li>- នាយកដ្ឋានមធ្យមសិក្សាចំណេះទូទៅ</li>
+                    <li>- បណ្ណាល័យអេឡិចត្រូនិក</li>
+                </ul>
+            </div>
+            <div class="text-center md:text-right">
+                <img src="585062235_1461588929141817_9088042084335284176_n.jpg" alt="Logo" class="h-20 mx-auto md:ml-auto mb-4 opacity-50">
+                <p class="text-xs text-gray-400">© ២០២៥ រក្សាសិទ្ធិគ្រប់យ៉ាងដោយ វិទ្យាល័យ អូរអំបិល</p>
             </div>
         </div>
     </footer>
