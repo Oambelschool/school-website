@@ -3,189 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>សាលាបញ្ញាសាស្ត្រអន្តរជាតិ - PSIS Sensok</title>
+    <title>វិទ្យាល័យ សម្តេចក្រុមព្រះ នរោត្តម រណឫទ្ធិ អូរអំបិល</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;700&family=Moul&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Kantumruy Pro', sans-serif;
-            background-color: #f3f4f6;
         }
         .khmer-moul {
             font-family: 'Moul', serif;
         }
-        .bg-psis-blue {
-            background-color: #1e2a78;
+        .bg-school-blue {
+            background-color: #002366;
         }
-        .bg-psis-gold {
-            background-color: #fdb813;
+        .bg-school-gold {
+            background-color: #fdb913;
+        }
+        .text-school-blue {
+            color: #002366;
+        }
+        .nav-item:hover {
+            background-color: #fdb913;
+            color: #002366;
         }
         .hero-gradient {
-            background: linear-gradient(rgba(30, 42, 120, 0.8), rgba(30, 42, 120, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #002366 0%, #004aad 100%);
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
 
-    <!-- Top Header -->
-    <header class="bg-white border-b border-gray-200">
-        <div class="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <img src="https://via.placeholder.com/80" alt="PSIS Logo" class="w-16 h-16 md:w-20 md:h-20 object-contain">
+    <!-- Header Section -->
+    <header class="bg-white border-b-4 border-school-gold shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                <div class="w-20 h-20 bg-school-blue rounded-full flex items-center justify-center text-white text-xs text-center p-2 border-2 border-school-gold">
+                    [រូបសញ្ញាវិទ្យាល័យ]
+                </div>
                 <div>
-                    <h1 class="khmer-moul text-blue-900 text-lg md:text-xl">សាលាបញ្ញាសាស្ត្រអន្តរជាតិ សាខាសែនសុខ</h1>
-                    <p class="text-red-600 font-bold text-sm md:text-base">Paññāsāstra International School Sensok</p>
-                    <div class="flex space-x-4 mt-1">
-                        <span class="text-blue-800 text-xs font-bold">វិន័យ</span>
-                        <span class="text-red-600 text-xs font-bold">គុណធម៌</span>
-                        <span class="text-yellow-600 text-xs font-bold">ស្មារតីជួយ</span>
-                    </div>
+                    <h1 class="khmer-moul text-school-blue text-xl md:text-2xl">វិទ្យាល័យ សម្តេចក្រុមព្រះ នរោត្តម រណឫទ្ធិ អូរអំបិល</h1>
+                    <p class="text-red-600 font-bold">វិន័យ គុណធម៌ សុភមង្គល</p>
                 </div>
             </div>
-            
-            <div class="hidden lg:flex flex-col items-end space-y-2">
-                <div class="flex space-x-1">
-                    <button class="bg-gray-200 px-3 py-1 text-xs rounded">អង់គ្លេស</button>
-                    <button class="bg-blue-800 text-white px-3 py-1 text-xs rounded">ភាសាខ្មែរ</button>
-                    <button class="bg-gray-200 px-3 py-1 text-xs rounded">Web Mail</button>
-                </div>
-                <img src="https://via.placeholder.com/300x80?text=Building+Image" alt="Building" class="h-16 rounded shadow-sm">
+            <div class="flex space-x-2">
+                <button class="bg-gray-200 px-3 py-1 text-sm rounded">អង់គ្លេស</button>
+                <button class="bg-school-blue text-white px-3 py-1 text-sm rounded">ភាសាខ្មែរ</button>
+                <button class="bg-gray-200 px-3 py-1 text-sm rounded">Web Mail</button>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Bar -->
-    <nav class="bg-blue-900 text-white sticky top-0 z-50">
-        <div class="container mx-auto px-2">
-            <ul class="flex flex-wrap items-center text-sm md:text-base overflow-x-auto whitespace-nowrap">
-                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg></li>
-                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">អំពីយើង</li>
-                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">ការអប់រំ</li>
-                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">ការចុះឈ្មោះ</li>
-                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">ព័ត៌មាន និង ព្រឹត្តិការណ៍</li>
-                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">កម្រងរូបភាព</li>
-                <li class="p-4 hover:bg-blue-800 cursor-pointer border-r border-blue-800">ទំនាក់ទំនង</li>
-                <li class="p-4 hover:bg-blue-700 bg-blue-800 cursor-pointer flex items-center">
-                    WE'RE ON FACEBOOK
+    <!-- Navigation Menu -->
+    <nav class="bg-school-blue text-white sticky top-0 z-50">
+        <div class="container mx-auto">
+            <ul class="flex flex-wrap items-center">
+                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900 bg-school-gold text-school-blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
                 </li>
+                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900">ទំព័រដើម</li>
+                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900">អំពីយើង</li>
+                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900">ការបង្រៀន</li>
+                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900">ព័ត៌មាន និង ព្រឹត្តិការណ៍</li>
+                <li class="nav-item px-4 py-3 cursor-pointer border-r border-blue-900">អាល់ប៊ុមរូបភាព</li>
+                <li class="nav-item px-4 py-3 cursor-pointer">ទំនាក់ទំនង</li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Slider Area -->
-    <section class="hero-gradient relative h-[400px] flex items-center">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-white">
-            <div class="flex justify-center md:justify-start">
-                <img src="https://via.placeholder.com/250x350?text=Founder+Image" alt="Founder" class="border-4 border-white shadow-2xl rounded-sm max-h-[350px]">
+    <section class="hero-gradient relative overflow-hidden min-h-[400px] flex items-center">
+        <div class="container mx-auto px-4 py-12 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-white mb-8 md:mb-0">
+                <h2 class="khmer-moul text-3xl md:text-5xl leading-tight mb-6">អប់រំកុមារគ្រប់រូប <br> ដើម្បីអនាគតដ៏ភ្លឺស្វាង</h2>
+                <p class="text-lg opacity-90 mb-8">យើងបណ្តុះបណ្តាលសិស្សានុសិស្សឱ្យមានចំណេះដឹង ជំនាញ និងសីលធម៌ខ្ពស់ ដើម្បីក្លាយជាសសរទ្រូងដ៏រឹងមាំសម្រាប់ជាតិមាតុភូមិ។</p>
+                <button class="bg-school-gold text-school-blue font-bold px-8 py-3 rounded-full hover:bg-yellow-400 transition">ស្វែងយល់បន្ថែម</button>
             </div>
-            <div class="text-center md:text-left space-y-4">
-                <h2 class="khmer-moul text-xl md:text-3xl leading-relaxed">
-                    ស្រឡាញ់មនុស្សម្នាក់ព្រោះតែ <span class="text-yellow-400">សន្តានចិត្ត</span><br>
-                    សរសើើមនុស្សម្នាក់ព្រោះតែ <span class="text-yellow-400">សមត្ថភាព</span><br>
-                    គោរពមនុស្សម្នាក់ព្រោះតែ <span class="text-yellow-400">គុណធម៌</span>
-                </h2>
-                <p class="text-lg italic">- លោកសាស្ត្រាចារ្យ កុល ផេង</p>
+            <div class="md:w-1/2 relative flex justify-center">
+                <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <!-- Image Placeholders as in your screenshot -->
+                    <div class="absolute inset-0 bg-white/10 rounded-full border-4 border-school-gold/50 animate-pulse"></div>
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-white rounded-2xl rotate-12 flex items-center justify-center border-4 border-school-gold overflow-hidden">
+                        [រូបភាពសកម្មភាពសិស្ស ១]
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-2xl -rotate-12 flex items-center justify-center border-4 border-school-gold overflow-hidden">
+                        [រូបភាពសកម្មភាពសិស្ស ២]
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- Slider Arrows -->
-        <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 p-2 rounded-full hover:bg-black/50">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
-        </button>
-        <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 p-2 rounded-full hover:bg-black/50">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-        </button>
     </section>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <div class="flex flex-col lg:flex-row gap-8">
-            
-            <!-- Left Side: Content -->
-            <div class="lg:w-3/4">
-                <h3 class="khmer-moul text-blue-900 text-xl border-b-2 border-blue-900 pb-2 mb-6">សូមស្វាគមន៍ការមកកាន់សាលាបញ្ញាសាស្ត្រអន្តរជាតិសាខាសែនសុខ</h3>
-                
+    <!-- Main Content Body -->
+    <main class="container mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Left Article Content -->
+        <div class="lg:w-2/3">
+            <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-school-blue">
+                <h3 class="khmer-moul text-school-blue text-xl mb-4">ស្វាគមន៍មកកាន់វិទ្យាល័យ សម្តេចក្រុមព្រះ នរោត្តម រណឫទ្ធិ អូរអំបិល</h3>
                 <div class="flex flex-col md:flex-row gap-6">
                     <div class="md:w-1/3">
-                        <img src="https://via.placeholder.com/400x300?text=School+Activity" alt="School" class="w-full rounded shadow">
+                        <div class="bg-gray-200 aspect-[3/4] rounded flex items-center justify-center text-center p-4">
+                            [រូបភាពអគារសិក្សា ឬ នាយក]
+                        </div>
                     </div>
-                    <div class="md:w-2/3 text-gray-700 leading-relaxed space-y-4">
-                        <p class="font-bold text-blue-800">The mission of Paññāsāstra International School (PSIS)...</p>
-                        <p>
-                            ...is to provide a high quality education that is distinctively English based, while pursuing academic excellence in every discipline of study. Paññāsāstra International School recognizes each student as an innocent youth full of hope and expectation in search for happiness.
-                        </p>
-                        <p>
-                            We strongly believe that the major component to becoming a successful program is through the alliance among the school personnel, parents, the community as well as international exchange programs.
-                        </p>
-                        <button class="text-blue-700 font-bold hover:underline">Read more →</button>
+                    <div class="md:w-2/3 leading-relaxed text-gray-700">
+                        <p class="mb-4">បេសកកម្មរបស់វិទ្យាល័យ សម្តេចក្រុមព្រះ នរោត្តម រណឫទ្ធិ អូរអំបិល គឺផ្តល់នូវការអប់រំប្រកបដោយគុណភាពខ្ពស់ ស្របតាមស្តង់ដារអប់រំជាតិ។ យើងយកចិត្តទុកដាក់លើការលូតលាស់របស់សិស្សគ្រប់រូប ទាំងផ្នែកបញ្ញា ស្មារតី និងសុខភាពរាងកាយ។</p>
+                        <p>យើងជឿជាក់យ៉ាងមុតមាំថា កិច្ចសហការរវាងលោកគ្រូ អ្នកគ្រូ មាតាបិតាសិស្ស និងសហគមន៍ គឺជាគន្លឹះដ៏សំខាន់ក្នុងការសម្រេចបាននូវភាពជោគជ័យក្នុងការបណ្តុះបណ្តាលធនធានមនុស្សសម្រាប់អនាគត។</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Right Side: Sidebar -->
-            <div class="lg:w-1/4">
-                <div class="bg-blue-900 text-white p-3 font-bold mb-2">ព័ត៌មានអំពី PSIS</div>
-                <ul class="bg-white shadow rounded divide-y divide-gray-100 mb-6">
-                    <li class="p-3 hover:bg-gray-50 cursor-pointer flex justify-between items-center text-sm">
-                        <span>សន្ទរកថាប្រធានគ្រប់គ្រង</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                    </li>
-                    <li class="p-3 hover:bg-gray-50 cursor-pointer flex justify-between items-center text-sm">
-                        <span>បេសកកម្ម</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                    </li>
-                    <li class="p-3 hover:bg-gray-50 cursor-pointer flex justify-between items-center text-sm">
-                        <span>ការសិក្សា</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                    </li>
-                    <li class="p-3 hover:bg-gray-50 cursor-pointer flex justify-between items-center text-sm">
-                        <span>រូបភាព និង វីដេអូ</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                    </li>
-                </ul>
-
-                <div class="bg-blue-900 text-white p-3 font-bold mb-2">វីដេអូ PSIS</div>
-                <div class="aspect-video bg-black rounded overflow-hidden">
-                    <div class="w-full h-full flex items-center justify-center text-white/50 italic text-xs">
-                        [Video Placeholder]
-                    </div>
-                </div>
-            </div>
-            
         </div>
+
+        <!-- Right Sidebar -->
+        <aside class="lg:w-1/3">
+            <div class="bg-school-blue rounded-t-lg text-white p-3 font-bold">
+                ព័ត៌មានអំពីសាលា
+            </div>
+            <div class="bg-white border border-t-0 rounded-b-lg shadow-sm">
+                <ul>
+                    <li class="border-b p-3 hover:bg-gray-50 cursor-pointer text-gray-700">សម្ភារៈរូបវន្ត និងគ្រប់គ្រង</li>
+                    <li class="border-b p-3 hover:bg-gray-50 cursor-pointer text-gray-700">បេសកកម្ម</li>
+                    <li class="border-b p-3 hover:bg-gray-50 cursor-pointer text-gray-700">ការសិក្សា</li>
+                    <li class="border-b p-3 hover:bg-gray-50 cursor-pointer text-gray-700">ចក្ខុវិស័យ និង គោលដៅ</li>
+                    <li class="p-3 hover:bg-gray-50 cursor-pointer text-gray-700">កាលវិភាគសិក្សា</li>
+                </ul>
+            </div>
+
+            <div class="mt-6 bg-school-blue rounded-t-lg text-white p-3 font-bold">
+                ព្រឹត្តិការណ៍ថ្មីៗ
+            </div>
+            <div class="bg-white border border-t-0 rounded-b-lg shadow-sm p-4">
+                <div class="flex gap-3 mb-4">
+                    <div class="bg-school-gold text-school-blue px-2 py-1 h-fit text-center rounded font-bold">
+                        <span class="block text-lg">15</span>
+                        <span class="text-xs uppercase">មេសា</span>
+                    </div>
+                    <div class="text-sm">ពិធីអបអរសាទរ បុណ្យចូលឆ្នាំថ្មី ប្រពៃណីជាតិខ្មែរ</div>
+                </div>
+                <div class="flex gap-3">
+                    <div class="bg-school-gold text-school-blue px-2 py-1 h-fit text-center rounded font-bold">
+                        <span class="block text-lg">01</span>
+                        <span class="text-xs uppercase">មិថុនា</span>
+                    </div>
+                    <div class="text-sm">ទិវាកុមារអន្តរជាតិ និងការតាំងពិព័រណ៍ស្នាដៃសិស្ស</div>
+                </div>
+            </div>
+        </aside>
+
     </main>
 
     <!-- Footer -->
-    <footer class="bg-blue-900 text-white py-10 mt-10">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <h4 class="khmer-moul mb-4 border-b border-blue-700 pb-2">ទំនាក់ទំនង</h4>
-                <p class="text-sm leading-relaxed">
-                    អាសយដ្ឋាន៖ ផ្លូវលេខ ១៩៨៦ សង្កាត់ភ្នំពេញថ្មី ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ<br>
-                    ទូរស័ព្ទ៖ 023 888 XXX / 012 XXX XXX<br>
-                    Email: info@psis-sensok.edu.kh
-                </p>
+    <footer class="bg-school-blue text-white py-10">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">&copy; ២០២៤ រក្សាសិទ្ធិគ្រប់យ៉ាងដោយ វិទ្យាល័យ សម្តេចក្រុមព្រះ នរោត្តម រណឫទ្ធិ អូរអំបិល</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="hover:text-school-gold transition">ហ្វេសប៊ុក</a>
+                <a href="#" class="hover:text-school-gold transition">ទូរលេខ</a>
+                <a href="#" class="hover:text-school-gold transition">យូធូប</a>
             </div>
-            <div>
-                <h4 class="khmer-moul mb-4 border-b border-blue-700 pb-2">តំណភ្ជាប់រហ័ស</h4>
-                <ul class="text-sm space-y-2">
-                    <li class="hover:text-yellow-400 cursor-pointer">ទំព័រដើម</li>
-                    <li class="hover:text-yellow-400 cursor-pointer">កម្មវិធីសិក្សា</li>
-                    <li class="hover:text-yellow-400 cursor-pointer">ព័ត៌មានសិស្ស</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="khmer-moul mb-4 border-b border-blue-700 pb-2">បណ្តាញសង្គម</h4>
-                <div class="flex space-x-4">
-                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-600 cursor-pointer">f</div>
-                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-600 cursor-pointer">y</div>
-                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-400 cursor-pointer">t</div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-10 pt-6 border-t border-blue-800 text-xs text-blue-300">
-            © 2024 Paññāsāstra International School Sensok. All Rights Reserved.
         </div>
     </footer>
 
