@@ -15,8 +15,8 @@
             overflow-x: auto;
             background: white;
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         table {
             border-collapse: collapse;
@@ -53,6 +53,10 @@
         }
         .status-pass { color: #16a34a; font-weight: bold; }
         .status-fail { color: #dc2626; font-weight: bold; }
+        .nav-active {
+            border-bottom: 3px solid #2563eb;
+            color: #2563eb;
+        }
         .loading-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -62,71 +66,152 @@
             align-items: center;
             z-index: 1000;
         }
+        /* Modal Style */
+        #bulk-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="p-0 md:p-4">
     <div id="loading" class="loading-overlay">
         <div class="text-lg font-bold text-blue-600 animate-pulse">កំពុងភ្ជាប់ទៅកាន់ Database...</div>
     </div>
 
-    <div class="max-w-full mx-auto">
-        <div class="text-center mb-8">
-            <h1 class="text-2xl md:text-3xl font-bold text-blue-800 mb-2">តារាងស្រង់ពិន្ទុ (រក្សាទុកលើ Cloud)</h1>
-            <div class="flex flex-wrap justify-center gap-6 text-sm font-medium">
-                <span class="bg-blue-100 px-3 py-1 rounded-full text-blue-800">សិស្សសរុប៖ <span id="total-students">0</span></span>
-                <span class="bg-pink-100 px-3 py-1 rounded-full text-pink-800">ស្រី៖ <span id="female-count">0</span></span>
-                <span id="sync-status" class="text-gray-500 italic text-xs">ស្ថានភាព៖ កំពុងភ្ជាប់...</span>
+    <!-- Modal សម្រាប់បញ្ចូលសិស្សច្រើន -->
+    <div id="bulk-modal">
+        <div class="bg-white p-6 rounded-xl w-full max-w-lg shadow-2xl">
+            <h3 class="text-lg font-bold mb-4">បញ្ចូលបញ្ជីឈ្មោះសិស្សច្រើននាក់</h3>
+            <p class="text-xs text-gray-500 mb-2 italic">បញ្ចូលឈ្មោះសិស្សម្នាក់ក្នុងមួយជួរ (ឈ្មោះ,ភេទ) ឧទាហរណ៍៖ សុខ សៅ,ប</p>
+            <textarea id="bulk-list" rows="10" class="w-full border rounded-lg p-3 bg-gray-50 text-sm mb-4 outline-none focus:ring-2 focus:ring-blue-500" placeholder="សុខ សៅ,ប&#10;ចាន់ ធារី,ស្រ"></textarea>
+            <div class="flex justify-end gap-2">
+                <button onclick="toggleBulkModal(false)" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded">បោះបង់</button>
+                <button onclick="processBulkAdd()" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700">បញ្ចូលទៅ Cloud</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bg-white shadow-sm mb-6 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="bg-blue-600 p-2 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <span class="font-bold text-xl text-blue-900 hidden md:block">SchoolGrade Pro</span>
+                </div>
+                <div class="flex gap-8">
+                    <button onclick="switchPage('entry')" id="nav-entry" class="font-bold text-sm py-5 nav-active">បញ្ចូលពិន្ទុ</button>
+                    <button onclick="switchPage('report')" id="nav-report" class="font-bold text-sm py-5 text-gray-500 hover:text-blue-600">របាយការណ៍</button>
+                </div>
+                <div id="sync-status" class="text-[10px] text-gray-400 italic">កំពុងភ្ជាប់...</div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-full mx-auto px-4">
+        <div id="page-entry" class="block">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-gray-500 mb-1">ឈ្មោះសិស្ស</label>
+                    <input type="text" id="student-name" placeholder="បញ្ចូលឈ្មោះសិស្សថ្មី" class="w-full border-gray-200 border rounded-lg p-3 bg-gray-50 focus:ring-2 focus:ring-blue-500 outline-none transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1">ភេទ</label>
+                    <select id="student-gender" class="w-full border-gray-200 border rounded-lg p-3 bg-gray-50 outline-none">
+                        <option value="ប">ប្រុស</option>
+                        <option value="ស្រ">ស្រី</option>
+                    </select>
+                </div>
+                <div class="flex items-end gap-2">
+                    <button onclick="addStudent()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition shadow-md shadow-blue-100">បន្ថែម</button>
+                    <button onclick="toggleBulkModal(true)" title="បញ្ចូលសិស្សច្រើន" class="bg-blue-100 text-blue-700 p-3 rounded-lg hover:bg-blue-200 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                    </button>
+                    <button onclick="calculateRanking()" title="គណនាចំណាត់ថ្នាក់" class="bg-green-100 text-green-700 p-3 rounded-lg hover:bg-green-200 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex gap-4 mb-4">
+                <div class="bg-white px-4 py-2 rounded-lg shadow-sm border-l-4 border-blue-500 text-sm">
+                    <span class="text-gray-500">សិស្សសរុប:</span> <span id="total-students" class="font-bold">0</span>
+                </div>
+                <div class="bg-white px-4 py-2 rounded-lg shadow-sm border-l-4 border-pink-500 text-sm">
+                    <span class="text-gray-500">សិស្សស្រី:</span> <span id="female-count" class="font-bold">0</span>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="score-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">ល.រ</th>
+                            <th rowspan="2" class="w-48 text-left px-4">គោត្តនាម នាម</th>
+                            <th rowspan="2" class="w-16">ភេទ</th>
+                            <th colspan="17" class="bg-blue-50 text-blue-800">មុខវិជ្ជា និងពិន្ទុ</th>
+                            <th rowspan="2">ពិន្ទុសរុប</th>
+                            <th rowspan="2">មធ្យម</th>
+                            <th rowspan="2">ចំណាត់ថ្នាក់</th>
+                            <th rowspan="2">លទ្ធផល</th>
+                            <th rowspan="2">លុប</th>
+                        </tr>
+                        <tr>
+                            <th class="vertical-text">តែងសេចក្ដី</th><th class="vertical-text">ភាសាខ្មែរ</th><th class="vertical-text">គណិតវិទ្យា</th>
+                            <th class="vertical-text">រូបវិទ្យា</th><th class="vertical-text">គីមីវិទ្យា</th><th class="vertical-text">ជីវវិទ្យា</th>
+                            <th class="vertical-text">ផែនដីវិទ្យា</th><th class="vertical-text">សីលធម៌</th><th class="vertical-text">ភូមិវិទ្យា</th>
+                            <th class="vertical-text">ប្រវត្តិវិទ្យា</th><th class="vertical-text">ភាសាបរទេស</th><th class="vertical-text">គេហវិទ្យា</th>
+                            <th class="vertical-text">អប់រំកាយ</th><th class="vertical-text">កសិកម្ម</th><th class="vertical-text">សិល្បៈ</th>
+                            <th class="vertical-text">បច្ចេកវិទ្យា</th><th class="vertical-text">លំនាំ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-list"></tbody>
+                </table>
             </div>
         </div>
 
-        <div class="flex flex-wrap items-end gap-4 mb-6 bg-white p-4 rounded-lg shadow-sm">
-            <div class="flex-1 min-w-[200px]">
-                <label class="block text-sm font-bold mb-1">ឈ្មោះសិស្ស</label>
-                <input type="text" id="student-name" placeholder="បញ្ចូលឈ្មោះ" class="w-full border rounded p-2 bg-gray-50">
+        <div id="page-report" class="hidden">
+            <div class="bg-white p-8 rounded-xl shadow-sm">
+                <h2 class="text-xl font-bold mb-6 text-gray-800 border-b pb-4">របាយការណ៍សង្ខេបប្រចាំខែ</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 bg-green-50 rounded-xl">
+                        <div class="text-green-600 text-sm mb-1">សិស្សជាប់សរុប</div>
+                        <div id="report-pass" class="text-3xl font-bold text-green-700">0</div>
+                    </div>
+                    <div class="p-6 bg-red-50 rounded-xl">
+                        <div class="text-red-600 text-sm mb-1">សិស្សធ្លាក់សរុប</div>
+                        <div id="report-fail" class="text-3xl font-bold text-red-700">0</div>
+                    </div>
+                    <div class="p-6 bg-blue-50 rounded-xl">
+                        <div class="text-blue-600 text-sm mb-1">ពិន្ទុមធ្យមក្នុងថ្នាក់</div>
+                        <div id="report-avg" class="text-3xl font-bold text-blue-700">0</div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h3 class="font-bold mb-4">តារាងកិត្តិយស (Top 3)</h3>
+                    <div id="top-students" class="space-y-3"></div>
+                </div>
             </div>
-            <div>
-                <label class="block text-sm font-bold mb-1">ភេទ</label>
-                <select id="student-gender" class="border rounded p-2 bg-gray-50 w-24">
-                    <option value="ប">ប្រុស</option>
-                    <option value="ស្រ">ស្រី</option>
-                </select>
-            </div>
-            <button id="add-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-bold transition disabled:opacity-50">បន្ថែមសិស្ស</button>
-            <button id="rank-btn" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-bold transition disabled:opacity-50">គណនាចំណាត់ថ្នាក់</button>
-        </div>
-
-        <div class="table-container">
-            <table id="score-table">
-                <thead>
-                    <tr>
-                        <th rowspan="2">ល.រ</th>
-                        <th rowspan="2" class="w-48 text-left px-4">គោត្តនាម នាម</th>
-                        <th rowspan="2" class="w-16">ភេទ</th>
-                        <th colspan="17">មុខវិជ្ជា និងពិន្ទុ</th>
-                        <th rowspan="2">ពិន្ទុសរុប</th>
-                        <th rowspan="2">មធ្យម</th>
-                        <th rowspan="2">ចំណាត់ថ្នាក់</th>
-                        <th rowspan="2">និទ្ទេស</th>
-                        <th rowspan="2">លទ្ធផល</th>
-                    </tr>
-                    <tr>
-                        <th class="vertical-text">តែងសេចក្ដី</th><th class="vertical-text">ភាសាខ្មែរ</th><th class="vertical-text">គណិតវិទ្យា</th>
-                        <th class="vertical-text">រូបវិទ្យា</th><th class="vertical-text">គីមីវិទ្យា</th><th class="vertical-text">ជីវវិទ្យា</th>
-                        <th class="vertical-text">ផែនដីវិទ្យា</th><th class="vertical-text">សីលធម៌</th><th class="vertical-text">ភូមិវិទ្យា</th>
-                        <th class="vertical-text">ប្រវត្តិវិទ្យា</th><th class="vertical-text">ភាសាបរទេស</th><th class="vertical-text">គេហវិទ្យា</th>
-                        <th class="vertical-text">អប់រំកាយ</th><th class="vertical-text">កសិកម្ម</th><th class="vertical-text">សិល្បៈ</th>
-                        <th class="vertical-text">បច្ចេកវិទ្យា</th><th class="vertical-text">លំនាំ</th>
-                    </tr>
-                </thead>
-                <tbody id="student-list"></tbody>
-            </table>
         </div>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, collection, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, collection, onSnapshot, updateDoc, deleteDoc, writeBatch } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const firebaseConfig = JSON.parse(__firebase_config);
         const app = initializeApp(firebaseConfig);
@@ -137,10 +222,66 @@
         let students = [];
         let userAuthenticated = false;
 
-        const loadingOverlay = document.getElementById('loading');
-        const syncStatus = document.getElementById('sync-status');
+        window.toggleBulkModal = (show) => {
+            document.getElementById('bulk-modal').style.display = show ? 'flex' : 'none';
+        };
 
-        // 1. មុខងារ Authentication (អនុវត្តតាម Rule 3)
+        window.processBulkAdd = async () => {
+            const listText = document.getElementById('bulk-list').value;
+            if (!listText || !userAuthenticated) return;
+
+            const lines = listText.split('\n');
+            const batch = writeBatch(db); // ប្រើ Batch សម្រាប់ការបញ្ចូលទិន្នន័យច្រើនក្នុងពេលតែមួយ
+            let addedCount = 0;
+
+            lines.forEach((line) => {
+                if (line.trim()) {
+                    const parts = line.split(',');
+                    const name = parts[0]?.trim();
+                    const gender = parts[1]?.trim() || 'ប';
+                    
+                    if (name) {
+                        const studentId = "std_" + Date.now() + "_" + Math.floor(Math.random() * 1000);
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'students_list', studentId);
+                        
+                        batch.set(docRef, {
+                            name: name,
+                            gender: gender,
+                            scores: Array(17).fill(0),
+                            total: 0,
+                            average: 0,
+                            rank: 0,
+                            result: 'ធ្លាក់'
+                        });
+                        addedCount++;
+                    }
+                }
+            });
+
+            if (addedCount > 0) {
+                document.getElementById('loading').style.display = 'flex';
+                await batch.commit();
+                document.getElementById('bulk-list').value = '';
+                toggleBulkModal(false);
+                alert(`បានបញ្ចូលសិស្សចំនួន ${addedCount} នាក់ដោយជោគជ័យ!`);
+            }
+        };
+
+        window.switchPage = (pageId) => {
+            document.getElementById('page-entry').classList.add('hidden');
+            document.getElementById('page-report').classList.add('hidden');
+            document.getElementById('nav-entry').classList.remove('nav-active', 'text-blue-600');
+            document.getElementById('nav-report').classList.remove('nav-active', 'text-blue-600');
+            document.getElementById('nav-entry').classList.add('text-gray-500');
+            document.getElementById('nav-report').classList.add('text-gray-500');
+
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+            document.getElementById('nav-' + pageId).classList.add('nav-active', 'text-blue-600');
+            document.getElementById('nav-' + pageId).classList.remove('text-gray-500');
+            
+            if(pageId === 'report') renderReport();
+        };
+
         const initAuth = async () => {
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
@@ -148,10 +289,7 @@
                 } else {
                     await signInAnonymously(auth);
                 }
-            } catch (error) {
-                console.error("Auth Error:", error);
-                syncStatus.innerText = "ស្ថានភាព៖  lỗi ផ្ទៀងផ្ទាត់";
-            }
+            } catch (error) { console.error(error); }
         };
 
         initAuth();
@@ -159,156 +297,116 @@
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 userAuthenticated = true;
-                syncStatus.innerText = "ស្ថានភាព៖ បានភ្ជាប់ Cloud";
-                loadingOverlay.querySelector('div').innerText = "កំពុងទាញទិន្នន័យសិស្ស...";
+                document.getElementById('sync-status').innerText = "Cloud Sync Active";
                 setupDataListener();
-            } else {
-                userAuthenticated = false;
-                syncStatus.innerText = "ស្ថានភាព៖ មិនទាន់ភ្ជាប់";
             }
         });
 
-        // 2. ការទាញទិន្នន័យ (ហៅតែបន្ទាប់ពីមាន Auth)
         function setupDataListener() {
-            if (!userAuthenticated) return;
-
             const dataRef = collection(db, 'artifacts', appId, 'public', 'data', 'students_list');
-            
             onSnapshot(dataRef, (snapshot) => {
                 students = [];
                 snapshot.forEach((doc) => {
                     students.push({ id: doc.id, ...doc.data() });
                 });
-                
-                loadingOverlay.style.display = 'none';
+                document.getElementById('loading').style.display = 'none';
                 renderTable();
                 updateStats();
-            }, (error) => {
-                console.error("Firestore Error:", error);
-                loadingOverlay.style.display = 'none';
-                if (error.code === 'permission-denied') {
-                    alert("សិទ្ធិចូលប្រើប្រាស់ត្រូវបានបដិសេធ។ សូមព្យាយាមម្តងទៀត។");
-                }
             });
         }
 
-        // 3. មុខងារបន្ថែមសិស្ស
         window.addStudent = async () => {
-            if (!userAuthenticated) return;
-            
             const nameInput = document.getElementById('student-name');
-            const name = nameInput.value;
-            const gender = document.getElementById('student-gender').value;
+            if (!nameInput.value || !userAuthenticated) return;
 
-            if (!name) return;
-
-            const studentId = "student_" + Date.now();
-            const newStudent = {
-                name: name,
-                gender: gender,
+            const studentId = "std_" + Date.now();
+            await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'students_list', studentId), {
+                name: nameInput.value,
+                gender: document.getElementById('student-gender').value,
                 scores: Array(17).fill(0),
                 total: 0,
                 average: 0,
                 rank: 0,
-                grade: '-',
-                result: '-'
-            };
-
-            try {
-                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'students_list', studentId), newStudent);
-                nameInput.value = '';
-            } catch (err) {
-                console.error("Save Error:", err);
-            }
+                result: 'ធ្លាក់'
+            });
+            nameInput.value = '';
         };
 
-        // 4. មុខងារកែប្រែពិន្ទុ
-        window.updateScore = async (studentId, subIdx, value) => {
-            if (!userAuthenticated) return;
-            
-            const val = parseFloat(value) || 0;
-            const student = students.find(s => s.id === studentId);
-            if (!student) return;
-
+        window.updateScore = async (id, subIdx, val) => {
+            const score = parseFloat(val) || 0;
+            const student = students.find(s => s.id === id);
             let newScores = [...student.scores];
-            newScores[subIdx] = val;
+            newScores[subIdx] = score;
 
             const total = newScores.reduce((a, b) => a + b, 0);
             const average = (total / 1000 * 50).toFixed(2);
-            
-            let grade = 'ខ្សោយណាស់';
-            if (average >= 45) grade = 'ល្អប្រសើរ';
-            else if (average >= 40) grade = 'ល្អណាស់';
-            else if (average >= 35) grade = 'ល្អ';
-            else if (average >= 25) grade = 'មធ្យម';
-            else if (average >= 15) grade = 'ខ្សោយ';
-
             const result = average >= 25 ? 'ជាប់' : 'ធ្លាក់';
 
-            try {
-                await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'students_list', studentId), {
-                    scores: newScores,
-                    total: total,
-                    average: average,
-                    grade: grade,
-                    result: result
-                });
-            } catch (err) {
-                console.error("Update Error:", err);
+            await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'students_list', id), {
+                scores: newScores, total, average, result
+            });
+        };
+
+        window.deleteStudent = async (id) => {
+            if(confirm('តើអ្នកពិតជាចង់លុបទិន្នន័យសិស្សនេះមែនទេ?')) {
+                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'students_list', id));
             }
         };
 
-        // 5. គណនាចំណាត់ថ្នាក់
         window.calculateRanking = async () => {
-            if (!userAuthenticated || students.length === 0) return;
-            
             let sorted = [...students].sort((a, b) => (b.total || 0) - (a.total || 0));
-            
             for(let i=0; i < sorted.length; i++) {
-                const s = sorted[i];
-                try {
-                    await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'students_list', s.id), {
-                        rank: i + 1
-                    });
-                } catch (e) { console.error(e); }
+                await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'students_list', sorted[i].id), {
+                    rank: i + 1
+                });
             }
         };
+
+        function renderTable() {
+            const tbody = document.getElementById('student-list');
+            tbody.innerHTML = '';
+            students.forEach((s, idx) => {
+                let rows = s.scores.map((sc, i) => `<td><input type="number" value="${sc}" onchange="updateScore('${s.id}', ${i}, this.value)"></td>`).join('');
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="text-xs text-gray-400">${idx+1}</td>
+                        <td class="text-left font-bold px-4">${s.name}</td>
+                        <td class="${s.gender === 'ស្រ' ? 'text-pink-600' : 'text-blue-600'}">${s.gender}</td>
+                        ${rows}
+                        <td class="font-bold text-blue-600">${s.total.toFixed(1)}</td>
+                        <td class="font-bold text-purple-600">${s.average}</td>
+                        <td class="bg-yellow-50 font-bold text-red-600">${s.rank || '-'}</td>
+                        <td class="${s.result === 'ជាប់' ? 'status-pass' : 'status-fail'}">${s.result}</td>
+                        <td><button onclick="deleteStudent('${s.id}')" class="text-red-400 hover:text-red-600">លុប</button></td>
+                    </tr>`;
+            });
+        }
+
+        function renderReport() {
+            const passCount = students.filter(s => s.result === 'ជាប់').length;
+            const avgClass = students.length ? (students.reduce((a, b) => a + parseFloat(b.average), 0) / students.length).toFixed(2) : 0;
+            
+            document.getElementById('report-pass').innerText = passCount;
+            document.getElementById('report-fail').innerText = students.length - passCount;
+            document.getElementById('report-avg').innerText = avgClass;
+
+            const top3 = [...students].sort((a, b) => b.total - a.total).slice(0, 3);
+            const topDiv = document.getElementById('top-students');
+            topDiv.innerHTML = top3.map((s, i) => `
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border-l-4 ${i==0?'border-yellow-400':i==1?'border-gray-300':'border-orange-300'}">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl font-black text-gray-300">#${i+1}</span>
+                        <span class="font-bold">${s.name}</span>
+                    </div>
+                    <span class="bg-white px-3 py-1 rounded shadow-sm text-sm font-bold text-blue-600">មធ្យម៖ ${s.average}</span>
+                </div>
+            `).join('');
+        }
 
         function updateStats() {
             document.getElementById('total-students').innerText = students.length;
             document.getElementById('female-count').innerText = students.filter(s => s.gender === 'ស្រ').length;
         }
-
-        function renderTable() {
-            const tbody = document.getElementById('student-list');
-            tbody.innerHTML = '';
-
-            students.forEach((s, sIdx) => {
-                let row = `<tr>
-                    <td class="text-xs text-gray-400">${sIdx + 1}</td>
-                    <td class="text-left font-bold text-gray-700 px-4">${s.name}</td>
-                    <td class="${s.gender === 'ស្រ' ? 'text-pink-600' : 'text-blue-600'}">${s.gender}</td>
-                `;
-
-                s.scores.forEach((score, subIdx) => {
-                    row += `<td class="p-0"><input type="number" value="${score}" onchange="updateScore('${s.id}', ${subIdx}, this.value)"></td>`;
-                });
-
-                row += `
-                    <td class="font-bold text-blue-700">${(s.total || 0).toFixed(1)}</td>
-                    <td class="font-bold text-purple-700">${s.average || 0}</td>
-                    <td class="bg-yellow-50 font-bold text-red-600 text-lg">${s.rank || '-'}</td>
-                    <td class="text-xs">${s.grade || '-'}</td>
-                    <td class="${s.result === 'ជាប់' ? 'status-pass' : 'status-fail'}">${s.result || '-'}</td>
-                </tr>`;
-                tbody.innerHTML += row;
-            });
-        }
-        
-        // ភ្ជាប់ Event ទៅកាន់ Window object សម្រាប់ប៊ូតុង
-        window.addStudent = window.addStudent;
-        window.calculateRanking = window.calculateRanking;
-        window.updateScore = window.updateScore;
     </script>
 </body>
 </html>
